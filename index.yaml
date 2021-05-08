@@ -1,0 +1,24 @@
+apiVersion: v1
+entries:
+  druid:
+  - apiVersion: v1
+    appVersion: 0.20.1
+    created: "2021-05-08T13:26:09.253662+08:00"
+    description: Apache Druid is a high performance analytics data store for event-driven data.
+    digest: 5ce26c6a04cb5238437648ff99bb1ee9cead659054716c57de611d1afd5ab946
+    home: http://druid.io/
+    icon: http://druid.io/img/druid_nav.png
+    keywords:
+    - olap
+    - database
+    - analytics
+    maintainers:
+    - email: liors@feature.fm
+      name: liors
+    name: druid
+    sources:
+    - https://github.com/1984man/helm/druid
+    urls:
+    - druid-0.3.12.tgz
+    version: 0.3.12
+generated: "2021-05-08T13:26:09.252102+08:00"
