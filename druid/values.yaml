@@ -160,7 +160,7 @@ coordinator:
 
 historical:
   name: historical
-  replicaCount: 1
+  replicaCount: 2
   port: 8083
   serviceType: ClusterIP
   javaOpts:
@@ -249,7 +249,7 @@ middleManager:
 #    DRUID_MAXDIRECTMEMORYSIZE: 6172m
 
 monitoring:
-  enabled: false
+  enabled: true
   createServiceMonitor: false
   port: 8000
 
