@@ -250,7 +250,7 @@ middleManager:
 
 monitoring:
   enabled: true
-  createServiceMonitor: false
+  createServiceMonitor: true
   port: 8000
 
 # ------------------------------------------------------------------------------

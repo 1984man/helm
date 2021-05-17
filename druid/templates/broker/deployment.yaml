@@ -85,7 +85,7 @@ spec:
         {{- if .Values.monitoring.enabled }}
         - name: druid-metrics-exporter
           image: quay.io/opstree/druid-exporter:v0.10
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           command: [".druid_exporter"]
           ports:
             - name: metrics
