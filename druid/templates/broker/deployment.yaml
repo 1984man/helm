@@ -24,7 +24,7 @@ spec:
       {{- with .Values.broker.podAnnotations }}
       annotations:
 {{ toYaml . | indent 8 }}
-      {{- end }}        
+      {{- end }}
     spec:
       containers:
         - name: {{ include "druid.broker.fullname" . }}
@@ -81,6 +81,24 @@ spec:
               port: {{ .Values.broker.port }}
           resources:
 {{ toYaml .Values.broker.resources | indent 12 }}
+
+        {{- if .Values.monitoring.enabled }}
+        - name: druid-metrics-exporter
+          image: quay.io/opstree/druid-exporter:v0.10
+          imagePullPolicy: Always
+          command: [".druid_exporter"]
+          ports:
+            - name: metrics
+              containerPort: {{ .Values.monitoring.port }}
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: metrics
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: metrics
+        {{- end }}
 
     {{- with .Values.broker.nodeSelector }}
       nodeSelector:

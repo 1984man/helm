@@ -84,6 +84,24 @@ spec:
           resources:
 {{ toYaml .Values.router.resources | indent 12 }}
 
+        {{- if .Values.monitoring.enabled }}
+        - name: druid-metrics-exporter
+          image: featurefm/druid-exporter
+          imagePullPolicy: Always
+          command: [".venv/bin/druid_exporter", "--debug", "--listen=:{{ .Values.monitoring.port }}"]
+          ports:
+            - name: metrics
+              containerPort: {{ .Values.monitoring.port }}
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: metrics
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: metrics
+        {{- end }}
+
     {{- with .Values.router.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

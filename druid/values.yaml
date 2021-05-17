@@ -250,8 +250,7 @@ middleManager:
 
 monitoring:
   enabled: true
-  createServiceMonitor: true
-  serviceName: default.exporter-prometheus-druid-exporter
+  createServiceMonitor: false
   port: 8000
 
 # ------------------------------------------------------------------------------
