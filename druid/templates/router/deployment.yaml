@@ -61,7 +61,7 @@ spec:
           - name: druid_emitter
             value: http
           - name: druid_emitter_http_recipientBaseUrl
-            value: "http://{{ .Values.monitoring.serviceName }}:{{ .Values.monitoring.port }}/druid"
+            value: "http://localhost:{{ .Values.monitoring.port }}/druid"
           {{- end}}
           {{- if .Values.router.managementProxy.enabled }}
           - name: druid_router_managementProxy_enabled
