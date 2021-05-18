@@ -84,9 +84,9 @@ spec:
 
         {{- if .Values.monitoring.enabled }}
         - name: druid-metrics-exporter
-          image: quay.io/opstree/druid-exporter:v0.10
-          imagePullPolicy: IfNotPresent
-          command: [".druid_exporter"]
+          image: featurefm/druid-exporter
+          imagePullPolicy: Always
+          command: [".venv/bin/druid_exporter", "--debug", "--listen=:{{ .Values.monitoring.port }}"]
           ports:
             - name: metrics
               containerPort: {{ .Values.monitoring.port }}
